@@ -1,0 +1,21 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+  	<h2><%= @user.errors.count %>error! </h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class=container>
+
+<h2> User info</h2>
+<%= form_for(@user) do |f| %>
+    <h5>Name<%= f.text_field :name %></h5>
+    <h5>Image</h5>
+    <%= f.attachment_field :profile_image %>
+    <h5>Introduction<%= f.text_area :introduction %></h5>
+    <%= f.submit 'Update User' %>
+<% end %>
+</div>
