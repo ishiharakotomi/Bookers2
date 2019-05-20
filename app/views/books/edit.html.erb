@@ -20,7 +20,7 @@
 			<p><%= f.text_field :title, class:"form-control" %></p>
 		<strong>Opinion</strong>
 		<p><%= f.text_area :body, class:"form-control" %></p>
-		<button type="submit" class="btn btn-primary btn-lg btn-block">Update Book</button>
+		<%= f.submit "Update Book", :class=>"btn btn-primary btn-lg btn-block" %>
 		<%= link_to 'Show', book_path(@book), class: "book_#{@book.id}"%> |
 		<%= link_to 'Back', books_path, class: "back"%>
 		<% end %>
