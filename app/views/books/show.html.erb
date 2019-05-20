@@ -14,12 +14,18 @@
             </thead>
               <tbody>
                 <tr>
-                  <th><%= attachment_image_tag @book.user, :profile_image, class: "pull-left profile-thumb", fallback: "no_image.jpg", size:'45x45'%></th>
-                  <th><%= @book.title %></th>
-                  <th><%= @book.body %></th>
+                  <td>
+                    <%= link_to user_path(@book.user.id) do %>
+
+                    <%= attachment_image_tag @book.user, :profile_image, class: "pull-left profile-thumb", fallback: "no_image.jpg", size:'45x45'%>
+                    <%= @book.user.name %>
+                    <% end %>
+                  </td>
+                  <td><%= @book.title %></th>
+                  <td><%= @book.body %></th>
                   <% if current_user.id == @book.user_id %>
-                  <th><%= link_to "Edit",edit_book_path(@book.id), class: "btn-sm btn-success"%></th>
-                  <th><%= link_to "Destroy", book_path(@book.id), method: :delete, "date-confirm" => "本当に削除しますか？",class: "btn-sm btn-danger"%></th>
+                  <td><%= link_to "Edit",edit_book_path(@book.id), class: "btn-sm btn-success edit_book_#{@book.id}"%></td>
+                  <td><%= link_to "Destroy", book_path(@book.id), method: :delete,  data: {confirm: "本当に削除しますか？"},class: "btn-sm btn-danger destroy_book_#{@book.id}"%></td>
                   <% end %>
                 </tr>
               </tbody>

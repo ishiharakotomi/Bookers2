@@ -1,3 +1,14 @@
+<% if @book.errors.any? %>
+  <div id="error_explanation">
+  	<h2><%= @book.errors.count %>error! </h2>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="container-fluid">
   <div class="center-block">
     <div class="row">
@@ -10,8 +21,8 @@
 		<strong>Opinion</strong>
 		<p><%= f.text_area :body, class:"form-control" %></p>
 		<button type="submit" class="btn btn-primary btn-lg btn-block">Update Book</button>
-		<%= link_to 'Show', book_path(@book)%> |
-		<%= link_to 'Back', books_path %>
+		<%= link_to 'Show', book_path(@book), class: "book_#{@book.id}"%> |
+		<%= link_to 'Back', books_path, class: "back"%>
 		<% end %>
 	  </div>
 	  <div class="col-xs-3"></div>
